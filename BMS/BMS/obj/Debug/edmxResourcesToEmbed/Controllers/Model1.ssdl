@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="adminID" />
+    </Key>
+    <Property Name="adminID" Type="int" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" />
+    <Property Name="password" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="BusAssignments">
+    <Key>
+      <PropertyRef Name="AssignmentID" />
+    </Key>
+    <Property Name="AssignmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusID" Type="int" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="AssignmentDate" Type="date" />
+    <Property Name="Shift" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Buses">
+    <Key>
+      <PropertyRef Name="BusID" />
+    </Key>
+    <Property Name="BusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusNumber" Type="varchar" MaxLength="50" />
+    <Property Name="BusModel" Type="varchar" MaxLength="100" />
+    <Property Name="Capacity" Type="int" />
+    <Property Name="PurchaseDate" Type="date" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="MaintenanceSchedule" Type="date" />
+  </EntityType>
+  <EntityType Name="Complaints">
+    <Key>
+      <PropertyRef Name="ComplaintID" />
+    </Key>
+    <Property Name="ComplaintID" Type="int" Nullable="false" />
+    <Property Name="PassengerID" Type="int" />
+    <Property Name="ComplaintDate" Type="date" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="ResolutionDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Drivers">
+    <Key>
+      <PropertyRef Name="DriverID" />
+    </Key>
+    <Property Name="DriverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="LicenseNumber" Type="varchar" MaxLength="50" />
+    <Property Name="ContactInfo" Type="varchar" MaxLength="100" />
+    <Property Name="HireDate" Type="date" />
+    <Property Name="Experience" Type="varchar" MaxLength="50" />
+    <Property Name="ShiftDetails" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Feedbacks">
+    <Key>
+      <PropertyRef Name="FeedbackID" />
+    </Key>
+    <Property Name="FeedbackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PassengerID" Type="int" />
+    <Property Name="BusID" Type="int" />
+    <Property Name="RouteID" Type="int" />
+    <Property Name="FeedbackDate" Type="date" />
+    <Property Name="Comments" Type="varchar" MaxLength="500" />
+    <Property Name="Rating" Type="int" />
+  </EntityType>
+  <EntityType Name="MaintenanceRecords">
+    <Key>
+      <PropertyRef Name="MaintenanceID" />
+    </Key>
+    <Property Name="MaintenanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormattedID" Type="varchar" MaxLength="11" StoreGeneratedPattern="Computed" />
+    <Property Name="BusID" Type="int" />
+    <Property Name="MaintenanceDate" Type="date" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="ServiceCenter" Type="varchar" MaxLength="100" />
+    <Property Name="NextScheduledMaintenance" Type="date" />
+  </EntityType>
+  <EntityType Name="Passengers">
+    <Key>
+      <PropertyRef Name="PassengerID" />
+    </Key>
+    <Property Name="PassengerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="ContactInfo" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Payments">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketID" Type="int" />
+    <Property Name="PaymentDate" Type="date" />
+    <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="PaymentMethod" Type="varchar" MaxLength="50" />
+    <Property Name="TransactionID" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Routes">
+    <Key>
+      <PropertyRef Name="RouteID" />
+    </Key>
+    <Property Name="RouteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RouteName" Type="varchar" MaxLength="16" StoreGeneratedPattern="Computed" />
+    <Property Name="StartLocation" Type="varchar" MaxLength="100" />
+    <Property Name="EndLocation" Type="varchar" MaxLength="100" />
+    <Property Name="Distance" Type="int" />
+    <Property Name="Duration" Type="varchar" MaxLength="50" />
+    <Property Name="Stops" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Schedules">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+    </Key>
+    <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusID" Type="int" />
+    <Property Name="RouteID" Type="int" />
+    <Property Name="DepartureTime" Type="time" Precision="7" />
+    <Property Name="ArrivalTime" Type="time" Precision="7" />
+    <Property Name="Frequency" Type="varchar" MaxLength="50" />
+    <Property Name="DaysOfOperation" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Stops">
+    <Key>
+      <PropertyRef Name="StopID" />
+    </Key>
+    <Property Name="StopID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RouteID" Type="int" />
+    <Property Name="StopName" Type="varchar" MaxLength="100" />
+    <Property Name="Location" Type="varchar" MaxLength="100" />
+    <Property Name="ArrivalTime" Type="time" Precision="7" />
+    <Property Name="DepartureTime" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleID" Type="int" />
+    <Property Name="PassengerName" Type="varchar" MaxLength="100" />
+    <Property Name="SeatNumber" Type="int" />
+    <Property Name="BookingDate" Type="date" />
+    <Property Name="Fare" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="TicketStatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" />
+    <Property Name="password" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'db.dbo.users' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="users">
+          <Property Name="username" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+        </EntityType>-->
+  <Association Name="FK__BusAssign__BusID__6A30C649">
+    <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+    <End Role="BusAssignments" Type="Self.BusAssignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buses">
+        <PropertyRef Name="BusID" />
+      </Principal>
+      <Dependent Role="BusAssignments">
+        <PropertyRef Name="BusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusAssign__Drive__6B24EA82">
+    <End Role="Drivers" Type="Self.Drivers" Multiplicity="0..1" />
+    <End Role="BusAssignments" Type="Self.BusAssignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drivers">
+        <PropertyRef Name="DriverID" />
+      </Principal>
+      <Dependent Role="BusAssignments">
+        <PropertyRef Name="DriverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Complaint__Passe__02084FDA">
+    <End Role="Passengers" Type="Self.Passengers" Multiplicity="0..1" />
+    <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passengers">
+        <PropertyRef Name="PassengerID" />
+      </Principal>
+      <Dependent Role="Complaints">
+        <PropertyRef Name="PassengerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedbacks__BusID__7A672E12">
+    <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+    <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buses">
+        <PropertyRef Name="BusID" />
+      </Principal>
+      <Dependent Role="Feedbacks">
+        <PropertyRef Name="BusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedbacks__Passe__797309D9">
+    <End Role="Passengers" Type="Self.Passengers" Multiplicity="0..1" />
+    <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passengers">
+        <PropertyRef Name="PassengerID" />
+      </Principal>
+      <Dependent Role="Feedbacks">
+        <PropertyRef Name="PassengerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedbacks__Route__7B5B524B">
+    <End Role="Routes" Type="Self.Routes" Multiplicity="0..1" />
+    <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Routes">
+        <PropertyRef Name="RouteID" />
+      </Principal>
+      <Dependent Role="Feedbacks">
+        <PropertyRef Name="RouteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Maintenan__BusID__76969D2E">
+    <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+    <End Role="MaintenanceRecords" Type="Self.MaintenanceRecords" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buses">
+        <PropertyRef Name="BusID" />
+      </Principal>
+      <Dependent Role="MaintenanceRecords">
+        <PropertyRef Name="BusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payments__Ticket__73BA3083">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+    <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="TicketID" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="TicketID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Schedules__BusID__628FA481">
+    <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+    <End Role="Schedules" Type="Self.Schedules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buses">
+        <PropertyRef Name="BusID" />
+      </Principal>
+      <Dependent Role="Schedules">
+        <PropertyRef Name="BusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Schedules__Route__6383C8BA">
+    <End Role="Routes" Type="Self.Routes" Multiplicity="0..1" />
+    <End Role="Schedules" Type="Self.Schedules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Routes">
+        <PropertyRef Name="RouteID" />
+      </Principal>
+      <Dependent Role="Schedules">
+        <PropertyRef Name="RouteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stops__RouteID__7F2BE32F">
+    <End Role="Routes" Type="Self.Routes" Multiplicity="0..1" />
+    <End Role="Stops" Type="Self.Stops" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Routes">
+        <PropertyRef Name="RouteID" />
+      </Principal>
+      <Dependent Role="Stops">
+        <PropertyRef Name="RouteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tickets__Schedul__6E01572D">
+    <End Role="Schedules" Type="Self.Schedules" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedules">
+        <PropertyRef Name="ScheduleID" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="ScheduleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbModelStoreContainer">
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BusAssignments" EntityType="Self.BusAssignments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Buses" EntityType="Self.Buses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Complaints" EntityType="Self.Complaints" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedbacks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MaintenanceRecords" EntityType="Self.MaintenanceRecords" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passengers" EntityType="Self.Passengers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Routes" EntityType="Self.Routes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schedules" EntityType="Self.Schedules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stops" EntityType="Self.Stops" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BusAssign__BusID__6A30C649" Association="Self.FK__BusAssign__BusID__6A30C649">
+      <End Role="Buses" EntitySet="Buses" />
+      <End Role="BusAssignments" EntitySet="BusAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusAssign__Drive__6B24EA82" Association="Self.FK__BusAssign__Drive__6B24EA82">
+      <End Role="Drivers" EntitySet="Drivers" />
+      <End Role="BusAssignments" EntitySet="BusAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Complaint__Passe__02084FDA" Association="Self.FK__Complaint__Passe__02084FDA">
+      <End Role="Passengers" EntitySet="Passengers" />
+      <End Role="Complaints" EntitySet="Complaints" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedbacks__BusID__7A672E12" Association="Self.FK__Feedbacks__BusID__7A672E12">
+      <End Role="Buses" EntitySet="Buses" />
+      <End Role="Feedbacks" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedbacks__Passe__797309D9" Association="Self.FK__Feedbacks__Passe__797309D9">
+      <End Role="Passengers" EntitySet="Passengers" />
+      <End Role="Feedbacks" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedbacks__Route__7B5B524B" Association="Self.FK__Feedbacks__Route__7B5B524B">
+      <End Role="Routes" EntitySet="Routes" />
+      <End Role="Feedbacks" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Maintenan__BusID__76969D2E" Association="Self.FK__Maintenan__BusID__76969D2E">
+      <End Role="Buses" EntitySet="Buses" />
+      <End Role="MaintenanceRecords" EntitySet="MaintenanceRecords" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payments__Ticket__73BA3083" Association="Self.FK__Payments__Ticket__73BA3083">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="Payments" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Schedules__BusID__628FA481" Association="Self.FK__Schedules__BusID__628FA481">
+      <End Role="Buses" EntitySet="Buses" />
+      <End Role="Schedules" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Schedules__Route__6383C8BA" Association="Self.FK__Schedules__Route__6383C8BA">
+      <End Role="Routes" EntitySet="Routes" />
+      <End Role="Schedules" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stops__RouteID__7F2BE32F" Association="Self.FK__Stops__RouteID__7F2BE32F">
+      <End Role="Routes" EntitySet="Routes" />
+      <End Role="Stops" EntitySet="Stops" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tickets__Schedul__6E01572D" Association="Self.FK__Tickets__Schedul__6E01572D">
+      <End Role="Schedules" EntitySet="Schedules" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

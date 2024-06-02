@@ -1,0 +1,58 @@
+﻿@model BMS.Controllers.Complaint
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Complaint</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplaintDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResolutionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResolutionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passenger.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passenger.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ComplaintID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BMS.Controllers.BusAssignment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shift)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bus.BusNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Driver.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignmentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shift)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bus.BusNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Driver.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AssignmentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AssignmentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AssignmentID })
+        </td>
+    </tr>
+}
+
+</table>

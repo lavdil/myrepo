@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="72f36b04e16a4a10993ba97d870de0b1" Name="Diagram1">
+        <EntityTypeShape EntityType="dbModel.BusAssignment" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Bus" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Complaint" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Driver" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Feedback" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.MaintenanceRecord" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Passenger" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Payment" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Route" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Schedule" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Stop" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Ticket" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="dbModel.FK__BusAssign__BusID__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__BusAssign__Drive__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Feedbacks__BusID__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Maintenan__BusID__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Schedules__BusID__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Complaint__Passe__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Feedbacks__Passe__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Feedbacks__Route__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Payments__Ticket__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Schedules__Route__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Stops__RouteID__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Tickets__Schedul__6E01572D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

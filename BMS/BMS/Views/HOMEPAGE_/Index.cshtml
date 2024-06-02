@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Bus Management System</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/002/393/823/small/gradient-blue-background-free-vector.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 36px; /* Increase font size */
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .col-md-3 {
+            flex: 0 0 25%;
+            max-width: 25%;
+            padding: 10px;
+        }
+
+        .category-box {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+        }
+
+            .category-box:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .category-box i {
+                font-size: 80px; /* Increase icon size */
+                margin-bottom: 20px; /* Increase margin */
+                color: #007bff;
+            }
+
+            .category-box h3 {
+                margin-bottom: 10px;
+                color: #333;
+                font-size: 24px; /* Increase font size */
+            }
+
+            .category-box p {
+                color: #777;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <a id="Buses-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-bus"></i>
+                        <h3>Buses</h3>
+                        <p>View Details</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="routes-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Routes</h3>
+                        <p>View Routes</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="schedules-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-clock"></i>
+                        <h3>Schedules</h3>
+                        <p>View Schedules</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="complaints-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Complaints</h3>
+                        <p>Raise a Complaint</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a id="feedbacks-link" href="#">
+                    <div class="category-box">
+                        <i class="fas fa-comment"></i>
+                        <h3>Feedback</h3>
+                        <p>Submit Feedback</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        // Update links dynamically based on mouseover
+        document.getElementById("Buses-link").addEventListener("mouseover", function () {
+            this.href = "/user/login"; // Update this line
+        });
+        document.getElementById("routes-link").addEventListener("mouseover", function () {
+            this.href = "/UserHolidayview/Index"; // Update this line
+        });
+        document.getElementById("schedules-link").addEventListener("mouseover", function () {
+            this.href = "/EmpAsset/Create"; // Update this line
+        });
+        document.getElementById("complaints-link").addEventListener("mouseover", function () {
+            this.href = "/UserHoliday/Create"; // Update this line
+        });
+        document.getElementById("feedbacks-link").addEventListener("mouseover", function () {
+            this.href = "/UserTimesheet/create"; // Update this line
+        });
+    </script>
+</body>
+</html>
